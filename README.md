@@ -1,6 +1,8 @@
-# AutoHost
+# AutoHost2ftn
 
-AutoHost est un host Windows standalone qui reprend le flux du hosting du Reboot Launcher :
+
+# FRANCAIS 
+
 
 - démarre/valide `lawinserver.exe`
 - met à jour `Config/config.ini` pour le matchmaker local
@@ -33,3 +35,32 @@ Commandes utiles :
 ```
 
 `--check` valide les chemins et extrait automatiquement le fallback Reboot DLL depuis le launcher si `GameServerDll` n'est pas renseigné.
+
+
+# ENGLISH 
+
+starts/validates lawinserver.exe
+updates Config/config.ini for the local matchmaker
+launches FortniteLauncher.exe and FortniteClient-Win64-Shipping_EAC.exe, then suspends them
+launches FortniteClient-Win64-Shipping.exe with Reboot host/headless args
+injects cobalt.dll, then injects the gameserver DLL after login
+pings the local UDP gameserver and auto-restarts after a match ends or after a crash
+Launch
+.\bin\Release\net8.0\win-x64\publish\AutoHost.exe
+
+Run as administrator if DLL injection fails.
+
+Config
+
+The autohost.json file is created automatically. Default paths already set:
+
+FortniteRoot: C:\Users\ban2f\Downloads\24.20 FreeBuild\24.20 FreeBuild
+LauncherRoot: C:\Users\ban2f\Desktop\Reboot-Launcher-10.0.9\Reboot-Launcher-10.0.9
+
+Useful commands:
+
+.\bin\Release\net8.0\win-x64\publish\AutoHost.exe --init
+.\bin\Release\net8.0\win-x64\publish\AutoHost.exe --check
+.\bin\Release\net8.0\win-x64\publish\AutoHost.exe --once
+
+--check validates paths and automatically extracts the fallback Reboot DLL from the launcher if GameServerDll is not configured.
